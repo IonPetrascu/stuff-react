@@ -1,0 +1,51 @@
+@import "./variables.scss";
+
+.poster {
+  aspect-ratio: 5/2;
+  width: 100%;
+  display: flex;
+}
+.left {
+  position: relative;
+  width: 50%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+}
+.title {
+  color: $violet;
+  font-weight: 300;
+  font-size: 70px;
+  line-height: 85px;
+  text-align: center;
+  text-transform: uppercase;
+
+  span {
+    line-height: 183px;
+    font-size: 150px;
+    display: block;
+  }
+}
+.image-left {
+  position: absolute;
+  left: -30px;
+  bottom: 40%;
+  transform: translateY(50%);
+}
+.image-right {
+  position: absolute;
+  right: -30px;
+  bottom: 10%;
+  transform: translateY(50%);
+}
+.right {
+  width: 50%;
+  height: 100%;
+  object-fit: cover;
+  background-position: center;
+}
+.image-poster {
+}
