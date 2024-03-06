@@ -1,0 +1,39 @@
+@import "./variables.scss";
+
+.banner {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  flex-grow: 1;
+  max-height: 420px;
+  background-color: $dark;
+}
+.sale {
+  font-size: 7.5em;
+  line-height: normal;
+  font-weight: 900;
+  text-align: center;
+  text-transform: uppercase;
+  color: $bg;
+}
+.info {
+  margin-left: 20px;
+}
+.slogan {
+  font-size: 20px;
+  text-transform: uppercase;
+}
+.title {
+  font-weight: 700;
+  font-size: 42px;
+  line-height: 51px;
+  text-transform: uppercase;
+  color: $light;
+  max-width: 500px;
+  margin: 10px 0 24px 0;
+}
+.image {
+  position: absolute;
+  right: 20px;
+  bottom: -20px;
+}
