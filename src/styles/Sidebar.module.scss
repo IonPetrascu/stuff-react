@@ -1,0 +1,41 @@
+@import "./variables.scss";
+
+.sidebar {
+  width: 300px;
+  background: $dark;
+  max-height: 420px;
+  border-radius: 10px;
+  padding: 25px;
+  display: flex;
+  flex-direction: column;
+  a {
+    color: $sea;
+    transition: color 0.3s ease;
+
+    &:hover {
+      color: $white;
+    }
+  }
+}
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.list {
+  margin-block: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: auto;
+}
+
+.conditions {
+  text-decoration: underline;
+}
