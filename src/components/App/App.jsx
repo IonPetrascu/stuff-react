@@ -5,10 +5,10 @@ import Footer from "../Footer/Footer";
 
 const App = () => {
   return (
-    <div>
+    <div className="app">
       <Header />
       {/* user form  */}
-      <div>
+      <div className="container">
         <Sidebar />
         <AppRoutes />
       </div>
