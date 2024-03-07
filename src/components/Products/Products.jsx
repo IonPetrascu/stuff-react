@@ -5,7 +5,7 @@ import { discountPrice } from "../../utils/discountPrice";
 import SkeletonCard from "../Skeleton/Card/SkeletonCard";
 import { randomInRange } from "../../utils/randomInRange";
 
-const Products = ({ title, products = [], quantity }) => {
+const Products = ({ title, products = [], quantity = 5 }) => {
   const list = products.filter((_, id) => id < quantity);
   return (
     <section className={styles.products}>
