@@ -6,12 +6,14 @@ import Footer from "../Footer/Footer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCategories } from "../../redux/categories/categoriesSlice";
+import { getProducts } from "../../redux/products/productsSlice";
 
 const App = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
     dispatch(getCategories());
+    dispatch(getProducts());
   }, []);
 
   return (
