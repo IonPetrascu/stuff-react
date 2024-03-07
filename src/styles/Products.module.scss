@@ -22,11 +22,14 @@
 }
 .card {
   width: 230px;
-  max-height: 490px;
+  max-height: 510px;
   border-radius: 10px;
   overflow: hidden;
   padding-bottom: 10px;
   background-color: $bg;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
 .title-card {
   font-weight: 600;
