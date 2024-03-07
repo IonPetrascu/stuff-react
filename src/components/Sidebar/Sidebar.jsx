@@ -1,9 +1,14 @@
 import styles from "../../styles/Sidebar.module.scss";
-import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { NavLink } from "react-router-dom";
 import Loading from "../../images/loading.svg";
+import { useSelector } from "react-redux";
+import { useParams } from "react-router-dom";
+
 const Sidebar = () => {
   const { list, isLoading } = useSelector((state) => state.categories);
+  const { id } = useParams();
+  console.log(list);
+  console.log(id);
 
   return (
     <aside className={styles.sidebar}>
@@ -14,20 +19,25 @@ const Sidebar = () => {
             <img className={styles.loading} src={Loading} alt="loading" />
           </div>
         ) : (
-          list.map(({ name, id }) => {
+          list.map((category) => {
             return (
-              <li key={id}>
-                <Link to={`/categories/${id}`}>{name}</Link>
+              <li key={category.id}>
+                <NavLink
+                  className={({isActive}) => isActive && styles['active-category']}
+                  to={`/categories/${category.id}`}
+                >
+                  {category.name}
+                </NavLink>
               </li>
             );
           })
         )}
       </ul>
       <div className={styles.footer}>
-        <Link to="/">Help</Link>
-        <Link className={styles.conditions} to="/">
+        <NavLink to="/">Help</NavLink>
+        <NavLink className={styles.conditions} to="/">
           Terms & Conditions
-        </Link>
+        </NavLink>
       </div>
     </aside>
   );
