@@ -3,20 +3,25 @@ import Banner from "../Banner/Banner";
 import Products from "../Products/Products";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
+import { getActiveCategory } from "../../utils/getActiveCategory";
 
 const CategoryPage = () => {
   const [categoryList, setCategoryList] = useState([]);
   const [quantityProducts, setQuantityProducts] = useState(10);
+  const [activeCat, setActiveCat] = useState();
+
   const { list } = useSelector((state) => state.products);
+  const categories = useSelector((state) => state.categories);
+
   const { id } = useParams();
-  
- 
+
   useEffect(() => {
     if (!id) return;
+    const categoriesList = list.filter((el) => el.category.id === +id);
 
-    const a = list.filter((el) => el.category.id === +id);
+    setActiveCat(getActiveCategory(categories, id));
 
-    setCategoryList(a);
+    setCategoryList(categoriesList);
   }, [id, list]);
 
   const handleButton = () => {
@@ -29,7 +34,7 @@ const CategoryPage = () => {
     <>
       <Banner />
       <Products
-        title="category name"
+        title={activeCat}
         products={categoryList}
         quantity={quantityProducts}
       />
