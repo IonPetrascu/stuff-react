@@ -1,0 +1,137 @@
+@import "./variables.scss";
+
+.product {
+  display: flex;
+  padding: 20px;
+  gap: 20px;
+  width: min-content;
+}
+.bigImage {
+  width: 375px;
+  height: 375px;
+  background-size: cover;
+  background-position: center;
+  border-radius: 10px;
+  transition: transform 0.2s ease-in-out;
+
+  &:hover {
+    transform: scale(1.05);
+  }
+}
+.images {
+  display: flex;
+  flex-direction: column;
+  padding-block: 5px;
+  gap: 20px;
+  cursor: pointer;
+  transition: transform 0.2s ease-in-out;
+  overflow: auto;
+  overflow-x: hidden;
+  height: 375px;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $dark;
+    border-radius: 20px;
+    border: 1px solid $bg;
+  }
+
+  div {
+    width: 100px;
+    min-height: 100px;
+    background-size: cover;
+    background-position: center;
+    border-radius: 10px;
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+}
+.info {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.title {
+  font-size: 18px;
+  line-height: 22px;
+  font-weight: 500;
+}
+.price {
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 24px;
+}
+.color {
+  font-size: 14px;
+  line-height: 17px;
+  color: $dark-sea;
+  span {
+    font-size: 14px;
+    line-height: 17px;
+    text-transform: capitalize;
+    color: $white;
+  }
+}
+.sizes {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  font-size: 14px;
+  line-height: 17px;
+  color: $dark-sea;
+
+  div {
+    padding: 4px 8px;
+    border-radius: 8px;
+    background: $bg;
+    color: $white;
+    cursor: pointer;
+  }
+}
+.description {
+  width: 395px;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  color: $grey;
+}
+.buttons {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+.btnCartAdd {
+  background: $bg;
+  &:disabled:hover {
+    cursor: not-allowed;
+    background-color: $bg;
+  }
+}
+.btnFavouritesAdd {
+  background: $dark-sea;
+  border-radius: 6px;
+}
+.onSides {
+  margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.purchased {
+  font-size: 10px;
+  line-height: 12px;
+  color: $dark-sea;
+}
+.btnBack {
+  font-size: 10px;
+  line-height: 12px;
+}
