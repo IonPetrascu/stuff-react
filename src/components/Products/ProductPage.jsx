@@ -23,13 +23,13 @@ const ProductPage = () => {
   }, [id]);
 
   useEffect(() => {
-    if (!product) {
+    if (!id) {
       navigate(ROUTES.HOME);
     }
     setSingleProduct(product);
     if (list) {
       const similar = list.filter(
-        (item) => item.category.id === singleProduct.category?.id
+        (item) => item.category.id === singleProduct?.category.id
       );
       setSimilarProducts(similar);
     }
