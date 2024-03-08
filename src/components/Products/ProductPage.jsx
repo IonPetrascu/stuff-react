@@ -27,10 +27,11 @@ const ProductPage = () => {
       navigate(ROUTES.HOME);
     }
     setSingleProduct(product);
-    if (list) {
+    if (list && singleProduct) {
       const similar = list.filter(
-        (item) => item.category.id === singleProduct?.category.id
-      );
+        (item) => item.category && item.category?.id === singleProduct.category?.id
+      )
+
       setSimilarProducts(similar);
     }
   }, [product]);
