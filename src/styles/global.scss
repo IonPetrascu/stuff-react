@@ -71,7 +71,6 @@ li {
   flex-direction: column;
 }
 .container {
-  flex: 1;
   display: flex;
   gap: 20px;
   flex-wrap: wrap;
@@ -93,8 +92,9 @@ li {
 
 section {
   background: $dark;
+  flex-grow: 1;
   border-radius: 6px;
-  width: 100%;
+ 
 }
 
 button {
