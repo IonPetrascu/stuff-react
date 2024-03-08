@@ -28,6 +28,21 @@
   flex-direction: column;
   gap: 10px;
   position: relative;
+  overflow-x: auto;
+
+  &::-webkit-scrollbar {
+    width: 12px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: $bg;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $dark;
+    border-radius: 20px;
+    border: 1px solid $bg;
+  }
 }
 
 .footer {
