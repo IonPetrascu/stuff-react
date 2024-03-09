@@ -30,3 +30,17 @@
   margin-top: 20px;
   text-align: center;
 }
+.noResults {
+  width: 100%;
+  text-align: center;
+  padding: 20px;
+  font-size: 2em;
+  position: relative;
+
+  button {
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+}

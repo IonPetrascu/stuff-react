@@ -4,6 +4,9 @@ import Products from "../Products/Products";
 import { useSelector } from "react-redux";
 import { useParams } from "react-router-dom";
 import { getActiveCategory } from "../../utils/getActiveCategory";
+import styles from "../../styles/CategoriesSection.module.scss";
+import { Link } from "react-router-dom";
+import { ROUTES } from "../../utils/routes";
 
 const CategoryPage = () => {
   const [categoryList, setCategoryList] = useState([]);
@@ -29,6 +32,19 @@ const CategoryPage = () => {
       setQuantityProducts((prev) => prev + 10);
     }
   };
+  if (!categoryList.length) {
+    return (
+      <>
+        <Banner />
+        <section className={styles.noResults}>
+          <Link to={ROUTES.HOME}>
+            <button>Return to store</button>
+          </Link>
+          No results
+        </section>
+      </>
+    );
+  }
 
   return (
     <>
