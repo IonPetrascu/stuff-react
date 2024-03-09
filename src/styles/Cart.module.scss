@@ -1,0 +1,45 @@
+@import "./variables.scss";
+
+.cart {
+  display: flex;
+  flex-direction: column;
+  padding: 24px 32px;
+  position: relative;
+}
+.title {
+  text-align: center;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+.items {
+  display: flex;
+  flex-direction: column;
+  margin: 15px 0px 20px;
+  row-gap: 10px;
+}
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+.totalPrice {
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+  color: $grey;
+  span {
+    color: $white;
+  }
+}
+.empty {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%);
+  font-size: 2em;
+}
+.back {
+  width: max-content;
+}

@@ -3,13 +3,21 @@ import styles from "../../styles/Product.module.scss";
 import { urlImage } from "../../utils/urlImage";
 import { Link } from "react-router-dom";
 import { ShortenedString } from "../../utils/ShortenedString";
-
+import { addItem } from "../../redux/user/userSlice";
+import { useDispatch } from "react-redux";
 const sizes = [4, 4.5, 5];
 
 const Product = (data) => {
   const { title, price, images = [], description } = data;
   const [bigImage, setBigImage] = useState(images[0]);
   const [sizeItem, setSizeItem] = useState();
+
+  const dispatch = useDispatch();
+
+  const addItemToCart = () => {
+    console.log("add item" + data);
+    dispatch(addItem(data));
+  };
 
   useEffect(() => {
     if (images.length) {
@@ -67,7 +75,11 @@ const Product = (data) => {
         )}
 
         <div className={styles.buttons}>
-          <button disabled={!sizeItem} className={styles.btnCartAdd}>
+          <button
+            disabled={!sizeItem}
+            onClick={addItemToCart}
+            className={styles.btnCartAdd}
+          >
             Add to cart
           </button>
           <button className={styles.btnFavouritesAdd}>Add to favourites</button>
