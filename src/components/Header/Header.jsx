@@ -1,9 +1,13 @@
 import Logo from "../../images/logo.svg";
 import Avatar from "../../images/avatar.jpg";
-
+import { ROUTES } from "../../utils/routes";
+import { Link } from "react-router-dom";
 import styles from "../../styles/Header.module.scss";
-
+import { useSelector } from "react-redux";
 const Header = () => {
+  const { cart } = useSelector((state) => state.user);
+  const countItems = cart.length;
+
   return (
     <header className={styles.header}>
       <div className={styles.logo}>
@@ -28,9 +32,14 @@ const Header = () => {
           <svg className={styles.heart}>
             <use xlinkHref="../../../public/sprite.svg#heart" />
           </svg>
+          <Link className={styles.cart} to={ROUTES.CART}>
           <svg className={styles.bag}>
             <use xlinkHref="../../../public/sprite.svg#bag" />
           </svg>
+            {countItems > 0 && (
+              <span className={styles.countItems}>{countItems}</span>
+            )}
+          </Link>
         </div>
       </div>
     </header>
