@@ -1,8 +1,40 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import axios from "axios";
+import { BASE_URL } from "../../utils/constants";
+
+export const createUser = createAsyncThunk(
+  "user/createUser",
+  async (payload) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/users/`, payload);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
+export const loginUser = createAsyncThunk(
+  "users/loginUser",
+  async (payload) => {
+    try {
+      const { data } = await axios.post(`${BASE_URL}/auth/login`, payload);
+      const login = await axios.get(`${BASE_URL}/auth/profile`, {
+        headers: { Authorization: `Bearer ${data.access_token}` },
+      });
+
+      return login.data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 
 const initialState = {
+  currentUser: null,
   cart: [],
   isLoading: false,
+  showForm: false,
+  typeForm: "signup",
 };
 
 export const userSlice = createSlice({
@@ -41,9 +73,24 @@ export const userSlice = createSlice({
       console.log(typeof payload);
       state.cart = newCart.filter((item) => item.id !== payload);
     },
+    toggleForm: (state, { payload }) => {
+      state.showForm = payload;
+    },
+    toggleTypeForm: (state, { payload }) => {
+      state.typeForm = payload;
+    },
+  },
+  extraReducers: (builder) => {
+    builder.addCase(createUser.fulfilled, (state, { payload }) => {
+      state.currentUser = payload;
+    });
+    builder.addCase(loginUser.fulfilled, (state, { payload }) => {
+      state.currentUser = payload;
+    });
   },
 });
 
-export const { addItem, removeItem, deleteItem } = userSlice.actions;
+export const { addItem, removeItem, deleteItem, toggleTypeForm, toggleForm } =
+  userSlice.actions;
 
 export default userSlice.reducer;

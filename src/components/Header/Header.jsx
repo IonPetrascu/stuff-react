@@ -3,10 +3,31 @@ import Avatar from "../../images/avatar.jpg";
 import { ROUTES } from "../../utils/routes";
 import { Link } from "react-router-dom";
 import styles from "../../styles/Header.module.scss";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
+import { toggleForm } from "../../redux/user/userSlice";
+import { useState } from "react";
+import { useEffect } from "react";
+import {useNavigate} from 'react-router-dom'
 const Header = () => {
-  const { cart } = useSelector((state) => state.user);
+  const [values, setValues] = useState({ name: "Guest", avatar: Avatar });
+  const { cart, currentUser } = useSelector((state) => state.user);
   const countItems = cart.length;
+  const dispatch = useDispatch();
+const navigate = useNavigate()
+  useEffect(() => {
+    if (currentUser) {
+      setValues(currentUser);
+    }
+  }, [currentUser]);
+
+  const toggleUser = () => {
+    if (!currentUser) {
+      dispatch(toggleForm(true));
+    }else{
+      navigate(ROUTES.PROFILE)
+    }
+
+  };
 
   return (
     <header className={styles.header}>
@@ -14,13 +35,13 @@ const Header = () => {
         <img src={Logo} alt="Stuff Logo" />
       </div>
       <div className={styles.info}>
-        <div className={styles.user}>
+        <div onClick={toggleUser} className={styles.user}>
           <img
             className={styles.userImage}
-            src={Avatar}
+            src={values.avatar}
             alt="Your avatar image"
           />
-          <div className={styles.userName}>Guest</div>
+          <div className={styles.userName}>{values.name}</div>
         </div>
         <form className={styles.form}>
           <svg className={styles["icon-search"]}>

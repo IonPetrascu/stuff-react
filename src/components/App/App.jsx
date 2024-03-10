@@ -2,6 +2,7 @@ import AppRoutes from "../Routes/AppRoutes";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 import Footer from "../Footer/Footer";
+import UserForm from "../UserForm/UserForm";
 
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -25,6 +26,7 @@ const App = () => {
         <AppRoutes />
       </div>
       <Footer />
+      <UserForm />
     </div>
   );
 };
