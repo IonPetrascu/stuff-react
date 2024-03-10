@@ -28,6 +28,14 @@ export const loginUser = createAsyncThunk(
     }
   }
 );
+export const updateUser = createAsyncThunk("user/updateUser", async (payload) => {
+  try {
+    const { data } = await axios.put(`${BASE_URL}/users/${payload.id}`,payload);
+    return data;
+  } catch (error) {
+    console.log(error);
+  }
+});
 
 const initialState = {
   currentUser: null,
@@ -85,6 +93,9 @@ export const userSlice = createSlice({
       state.currentUser = payload;
     });
     builder.addCase(loginUser.fulfilled, (state, { payload }) => {
+      state.currentUser = payload;
+    });
+    builder.addCase(updateUser.fulfilled, (state, { payload }) => {
       state.currentUser = payload;
     });
   },

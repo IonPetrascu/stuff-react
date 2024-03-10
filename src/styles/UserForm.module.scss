@@ -33,15 +33,16 @@
 }
 .title {
   font-size: 20px;
+  text-align: center;
 }
 .form {
   width: 100%;
+ 
   display: flex;
   flex-direction: column;
   align-items: start;
   gap: 10px;
-}
-.label {
+  margin: 0 auto;
 }
 .input {
   background-color: $bg;
@@ -62,4 +63,14 @@
     cursor: pointer;
     color: $white;
   }
+}
+
+.profileTitle {
+  text-align: center;
+  font-size: 2em;
+}
+.profile {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
 }
