@@ -16,13 +16,18 @@ export const getProducts = createAsyncThunk(
 
 const initialState = {
   list: [],
+  filtered:[],
   isLoading: false,
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
-  reducers: {},
+  reducers: {
+    filteredByPrice:(state,{payload})=>{
+      state.filtered = state.list.filter((item)=> item.price < payload)
+    }
+  },
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
       state.isLoading = true;
@@ -37,6 +42,6 @@ export const productsSlice = createSlice({
   },
 });
 
-//export const {} = productsSlice.actions;
+export const { filteredByPrice } = productsSlice.actions;
 
 export default productsSlice.reducer;
