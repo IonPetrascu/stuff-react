@@ -24,11 +24,23 @@ export const getProductsByQuery = createAsyncThunk(
     }
   }
 );
+export const getFilteredCategory = createAsyncThunk(
+  "products/getFilteredCategory",
+  async (url) => {
+    try {
+      const { data } = await axios(url);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 const initialState = {
   list: [],
   filtered: [],
   isLoading: false,
   searchList: [],
+  filteredCategory: [],
 };
 
 export const productsSlice = createSlice({
@@ -62,6 +74,17 @@ export const productsSlice = createSlice({
       state.isLoading = false;
     });
     builder.addCase(getProductsByQuery.rejected, (state) => {
+      state.isLoading = false;
+    });
+    //getFilteredCategory
+    builder.addCase(getFilteredCategory.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getFilteredCategory.fulfilled, (state, { payload }) => {
+      state.filteredCategory = payload;
+      state.isLoading = false;
+    });
+    builder.addCase(getFilteredCategory.rejected, (state) => {
       state.isLoading = false;
     });
   },

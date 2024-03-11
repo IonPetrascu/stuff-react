@@ -44,3 +44,17 @@
     transform: translateY(-50%);
   }
 }
+.filter{
+  background-color: $dark;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  input{
+    background-color: $bg;
+    padding: 10px;
+    border-radius: 10px; 
+    
+    
+  }
+}
