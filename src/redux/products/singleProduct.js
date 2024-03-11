@@ -14,6 +14,7 @@ export const getSingleProduct = createAsyncThunk(
   }
 );
 
+
 const initialState = {
   product: null,
   isLoading: false,
@@ -35,6 +36,7 @@ export const singleProductSlice = createSlice({
       state.isLoading = false;
       state.product = null;
     });
+   
   },
 });
 

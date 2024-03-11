@@ -13,20 +13,34 @@ export const getProducts = createAsyncThunk(
     }
   }
 );
-
+export const getProductsByQuery = createAsyncThunk(
+  "products/getProductsByQuery",
+  async (queryText) => {
+    try {
+      const { data } = await axios(`${BASE_URL}/products/?title=${queryText}`);
+      return data;
+    } catch (error) {
+      console.log(error);
+    }
+  }
+);
 const initialState = {
   list: [],
-  filtered:[],
+  filtered: [],
   isLoading: false,
+  searchList: [],
 };
 
 export const productsSlice = createSlice({
   name: "products",
   initialState,
   reducers: {
-    filteredByPrice:(state,{payload})=>{
-      state.filtered = state.list.filter((item)=> item.price < payload)
-    }
+    filteredByPrice: (state, { payload }) => {
+      state.filtered = state.list.filter((item) => item.price < payload);
+    },
+    clearListSearch: (state) => {
+      state.searchList = [];
+    },
   },
   extraReducers: (builder) => {
     builder.addCase(getProducts.pending, (state) => {
@@ -39,9 +53,20 @@ export const productsSlice = createSlice({
     builder.addCase(getProducts.rejected, (state) => {
       state.isLoading = false;
     });
+    //getProductsByQuery
+    builder.addCase(getProductsByQuery.pending, (state) => {
+      state.isLoading = true;
+    });
+    builder.addCase(getProductsByQuery.fulfilled, (state, { payload }) => {
+      state.searchList = payload;
+      state.isLoading = false;
+    });
+    builder.addCase(getProductsByQuery.rejected, (state) => {
+      state.isLoading = false;
+    });
   },
 });
 
-export const { filteredByPrice } = productsSlice.actions;
+export const { filteredByPrice, clearListSearch } = productsSlice.actions;
 
 export default productsSlice.reducer;
