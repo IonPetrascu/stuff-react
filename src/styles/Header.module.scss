@@ -88,11 +88,12 @@
 }
 .productsSearch {
   width: 100%;
-  height: 305px;
+  min-height: min-content;
+  max-height: 305px;
   background-color: $dark-sea;
   position: absolute;
   left: 0;
-  bottom: -305px;
+  top: 100%;
   z-index: 1;
   border-radius: 10px;
   overflow-y: auto;
