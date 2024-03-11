@@ -48,9 +48,9 @@ const Header = () => {
 
   return (
     <header className={styles.header}>
-      <div className={styles.logo}>
+      <Link to={ROUTES.HOME} className={styles.logo}>
         <img src={Logo} alt="Stuff Logo" />
-      </div>
+      </Link>
       <div className={styles.info}>
         <div onClick={toggleUser} className={styles.user}>
           <img
