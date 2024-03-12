@@ -4,13 +4,16 @@ import { urlImage } from "../../utils/urlImage";
 import { Link } from "react-router-dom";
 import { ShortenedString } from "../../utils/ShortenedString";
 import { addItem } from "../../redux/user/userSlice";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { addToFavorites } from "../../redux/favorites/favoritesSlice";
 const sizes = [4, 4.5, 5];
 
 const Product = (data) => {
-  const { title, price, images = [], description } = data;
+  const { title, price, images = [], description, id } = data;
   const [bigImage, setBigImage] = useState(images[0]);
   const [sizeItem, setSizeItem] = useState();
+  const {favorites} = useSelector((state) => state.favorites);
+  const isFavorite = favorites.find((item) => item.id === id);
 
   const dispatch = useDispatch();
 
@@ -30,6 +33,9 @@ const Product = (data) => {
   };
   const handleSize = (size) => {
     setSizeItem(size);
+  };
+  const handleFavorites = () => {
+    dispatch(addToFavorites(data));
   };
 
   return (
@@ -82,7 +88,9 @@ const Product = (data) => {
           >
             Add to cart
           </button>
-          <button className={styles.btnFavouritesAdd}>Add to favourites</button>
+          <button onClick={handleFavorites} className={styles.btnFavouritesAdd}>
+            {isFavorite ? "Add to favourites" : "Remove from favorites"}
+          </button>
         </div>
         <div className={styles.onSides}>
           <span className={styles.purchased}>19 people purchased</span>
