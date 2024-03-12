@@ -6,6 +6,7 @@ import Cart from "../Cart/Cart";
 import CategoryPage from "../Categories/CategoryPage";
 import ProductPage from "../Products/ProductPage";
 import Profile from "../Profile/Profile";
+import Favorites from "../Favorites/Favorites";
 
 const AppRoutes = () => {
   return (
@@ -15,6 +16,7 @@ const AppRoutes = () => {
       <Route path={ROUTES.CATEGORY} element={<CategoryPage />} />
       <Route path={ROUTES.PRODUCT} element={<ProductPage />} />
       <Route path={ROUTES.PROFILE} element={<Profile />} />
+      <Route path={ROUTES.FAVORITES} element={<Favorites />} />
     </Routes>
   );
 };

@@ -1,0 +1,14 @@
+@import "./variables.scss";
+
+.empty {
+  width: 100%;
+  padding: 30px;
+  text-align: center;
+  font-size: 20px;
+  display: flex;
+  align-items: center;
+
+  h2 {
+    flex: 1;
+  }
+}

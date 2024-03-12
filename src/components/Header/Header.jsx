@@ -98,9 +98,11 @@ const Header = () => {
           )}
         </form>
         <div className={styles.account}>
-          <svg className={styles.heart}>
-            <use xlinkHref="../../../public/sprite.svg#heart" />
-          </svg>
+          <Link to={ROUTES.FAVORITES}>
+            <svg className={styles.heart}>
+              <use xlinkHref="../../../public/sprite.svg#heart" />
+            </svg>
+          </Link>
           <Link className={styles.cart} to={ROUTES.CART}>
             <svg className={styles.bag}>
               <use xlinkHref="../../../public/sprite.svg#bag" />
