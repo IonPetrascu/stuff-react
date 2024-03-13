@@ -1,4 +1,4 @@
-@import "./variables.scss";
+@import './variables.scss';
 
 .empty {
   width: 100%;
@@ -11,4 +11,7 @@
   h2 {
     flex: 1;
   }
+}
+.btn {
+  margin: 20px auto 40px;
 }
