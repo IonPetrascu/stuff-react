@@ -32,7 +32,7 @@ const Favorites = () => {
       )}
 
       {quantity < favorites.length && (
-        <button onClick={handleButton}>See more</button>
+        <button className={styles.btn} onClick={handleButton}>See more</button>
       )}
     </>
   );
