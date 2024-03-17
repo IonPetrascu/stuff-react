@@ -44,7 +44,7 @@ const CartItem = ({
         <span>{quantity * price}$</span>
       </div>
       <div className={styles.close} onClick={deleteItemFromCart}>
-        <img src={Close} alt="" />
+        <img src={Close} alt="Icon close" />
       </div>
     </div>
   );
