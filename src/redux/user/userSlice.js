@@ -87,6 +87,9 @@ export const userSlice = createSlice({
     toggleTypeForm: (state, { payload }) => {
       state.typeForm = payload;
     },
+    resetCart:(state)=>{
+      state.cart = []
+    }
   },
   extraReducers: (builder) => {
     builder.addCase(createUser.fulfilled, (state, { payload }) => {
@@ -101,7 +104,7 @@ export const userSlice = createSlice({
   },
 });
 
-export const { addItem, removeItem, deleteItem, toggleTypeForm, toggleForm } =
+export const { addItem,resetCart, removeItem, deleteItem, toggleTypeForm, toggleForm } =
   userSlice.actions;
 
 export default userSlice.reducer;
