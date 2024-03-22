@@ -89,7 +89,7 @@ const Product = (data) => {
             Add to cart
           </button>
           <button onClick={handleFavorites} className={styles.btnFavouritesAdd}>
-            {isFavorite ? "Add to favourites" : "Remove from favorites"}
+            {isFavorite ? "Remove from favorites" : "Add to favourites"}
           </button>
         </div>
         <div className={styles.onSides}>
