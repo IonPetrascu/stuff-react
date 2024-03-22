@@ -6,17 +6,17 @@ import UserLoginFrom from "./UserLoginFrom";
 import UserSignUpForm from "./UserSignUpForm";
 
 const UserForm = () => {
-  const { showForm, typeForm } = useSelector((state) => state.user);
-
+  const { showForm, typeForm,currentUser } = useSelector((state) => state.user);
   const dispatch = useDispatch();
 
   const closeForm = () => {
     dispatch(toggleForm(false));
   };
 
-  if (!showForm) {
+  if (!showForm || currentUser !== null) {
     return <></>;
   }
+
   return (
     <div onClick={closeForm} className={styles.overlay}>
       <aside
