@@ -50,7 +50,7 @@ const ProductPage = () => {
         quantity={quantityProducts}
       />
       {quantityProducts < similarProducts.length && (
-        <button style={{ margin: "0 auto" }} onClick={handleProducts}>
+        <button style={{ margin: "0 auto 20px" }} onClick={handleProducts}>
           See more
         </button>
       )}
