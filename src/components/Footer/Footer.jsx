@@ -16,7 +16,7 @@ const Footer = () => {
         {socials.map((social, index) => {
           return (
             <svg className={styles.icon} key={index}>
-              <use xlinkHref={`../../../public/sprite.svg#${social}`} />
+              <use xlinkHref={`./sprite.svg#${social}`} />
             </svg>
           );
         })}

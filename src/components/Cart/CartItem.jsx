@@ -30,13 +30,13 @@ const CartItem = ({
       <div className={styles.buttons}>
         <button onClick={removeItemFromCart} className={styles.btnMinus}>
           <svg className={styles.icon}>
-            <use xlinkHref={`../../../public/sprite.svg#minus`} />
+            <use xlinkHref={`./sprite.svg#minus`} />
           </svg>
         </button>
         <span className={styles.count}>{quantity}</span>
         <button onClick={addItemToCart} className={styles.btnPlus}>
           <svg className={styles.icon}>
-            <use xlinkHref={`../../../public/sprite.svg#plus`} />
+            <use xlinkHref={`./sprite.svg#plus`} />
           </svg>
         </button>
       </div>

@@ -62,7 +62,7 @@ const Header = () => {
         </div>
         <form className={styles.form}>
           <svg className={styles["icon-search"]}>
-            <use xlinkHref="../../../public/sprite.svg#search" />
+            <use xlinkHref="./sprite.svg#search" />
           </svg>
           <input
             value={searchText}
@@ -100,12 +100,12 @@ const Header = () => {
         <div className={styles.account}>
           <Link to={ROUTES.FAVORITES}>
             <svg className={styles.heart}>
-              <use xlinkHref="../../../public/sprite.svg#heart" />
+              <use xlinkHref="./sprite.svg#heart" />
             </svg>
           </Link>
           <Link className={styles.cart} to={ROUTES.CART}>
             <svg className={styles.bag}>
-              <use xlinkHref="../../../public/sprite.svg#bag" />
+              <use xlinkHref="./sprite.svg#bag" />
             </svg>
             {countItems > 0 && (
               <span className={styles.countItems}>{countItems}</span>
